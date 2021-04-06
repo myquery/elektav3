@@ -1,0 +1,128 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: hidden;
+  background-image: linear-gradient(180deg, #1e3c74 #fff #1e3c74);
+  background:#1e3c74;
+  user-select: none;
+  scroll-behavior: smooth;
+  color:#fff;
+
+
+  
+}
+:root{
+  --root_bkg: #f8f9fa;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+header{
+  background:transparent !important;
+}
+.elekta-header{
+ display:grid;
+
+}
+
+main{
+ background:transparent;
+}
+.home-img_container{
+display:grid;
+place-items:center;
+
+}
+
+.home-container{
+display:grid;
+grid-template-columns: 50% 50%;
+}
+.home-intro{
+margin:5rem;
+}
+.home-img{
+display: grid;
+place-items: center;
+
+}
+.elekta_card_container{
+height: auto;
+width: 100%;
+display:grid;
+grid-template-columns: 1fr 1fr;
+grid-template-rows: 1fr 1fr;
+grid-gap:1rem;
+
+}
+.elekta_card{
+box-shadow: 0 2px 5px 1px #25334C;
+height: 20rem;
+width: 25rem;
+
+}
+
+.elekta_card-content{
+margin:5rem;
+display: grid;
+place-items:center;
+}
+.card-color-first{
+background:#1F85DE;
+border-radius: 10rem 0.2rem 0rem 0;
+}
+
+.card-color-second{
+background:#51537f;
+border-radius: 0.2rem 10rem 0rem 0;
+}
+.card-color-third{
+background:#2d459c;
+border-radius: 0 0 0.2rem 10rem;
+}
+
+.card-color-fourth{
+background:#6c63ff;
+border-radius: 0 0 10rem 0.2rem;
+}
+
+.footer{
+text-align:center;
+}

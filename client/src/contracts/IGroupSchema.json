@@ -1,0 +1,2496 @@
+{
+  "contractName": "IGroupSchema",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/emplug7/applications/elektav3/contracts/IGroupSchema.sol\":\"IGroupSchema\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/emplug7/applications/elektav3/contracts/IGroupSchema.sol\":{\"keccak256\":\"0x29997629623f9b45d519000067b6a3ff86010240c9df8e7adef14a4c1cf3efd2\",\"urls\":[\"bzz-raw://b98a7d7bc215a33ef904ce299f26236934d83ec7ff1f7b930f54d2925886cc9d\",\"dweb:/ipfs/QmYP8bz1ZqK9YezX2s26KSBLpc5xjpMNhe1en1dvNQx7cp\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603e80601d6000396000f3fe6080604052600080fdfea265627a7a72315820e66c01a49f585b831b872c774d9f478d942d4a7a1254effe66877557677ddce164736f6c63430005100032",
+  "deployedBytecode": "0x6080604052600080fdfea265627a7a72315820e66c01a49f585b831b872c774d9f478d942d4a7a1254effe66877557677ddce164736f6c63430005100032",
+  "sourceMap": "92:2337:3:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;92:2337:3;;;;;;;",
+  "deployedSourceMap": "92:2337:3:-;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\n//pragma solidity 0.6.6;\n\ninterface IGroupSchema {\n    struct Group {\n        uint256 id;\n        string name;\n        string symbol;\n        bool exists;\n        address payable creatorAddress;\n    }\n\n    struct Cycle {\n        uint256 id;\n        uint256 groupId;\n        uint256 numberOfDepositors;\n        uint256 cycleStartTimeStamp;\n        uint256 cycleDuration;\n        uint256 maximumSlots;\n        uint256 cycleStakeAmount;\n        // represents the total stakes of every cycle member deposits\n        uint256 totalStakes;\n        //represents the total stakes of every cycle member withdrawal\n        uint256 stakesClaimed;\n        bool hasMaximumSlots;\n        bool exists;\n        CycleStatus cycleStatus;\n        // represents the number of cycle stakes that user's have cashed out on before the cycle has ended\n        uint256 stakesClaimedBeforeMaturity;\n    }\n\n    struct CycleFinancial {\n        bool exists;\n        uint256 cycleId;\n        //total underlying asset deposited into contract\n        uint256 underlyingTotalDeposits;\n        //total underlying asset that have been withdrawn by cycle members\n        uint256 underlyingTotalWithdrawn;\n        // underlying amount gotten after lending period has ended and shares have been reedemed for underlying asset;\n        uint256 underlyingBalance;\n        // lending shares representation of amount deposited in lending protocol\n        uint256 derivativeBalance;\n        // represents the total underlying crypto amount that has been cashed out before the cycle ended\n        uint256 underylingBalanceClaimedBeforeMaturity;\n        // represents the total derivative crypto amount that has been cashed out on before the cycle ended\n        uint256 derivativeBalanceClaimedBeforeMaturity;\n    }\n\n    struct CycleMember {\n        uint256 cycleId;\n        uint256 groupId;\n        uint256 totalLiquidityAsPenalty;\n        uint256 numberOfCycleStakes;\n        uint256 stakesClaimed;\n        bool exist;\n        address payable _address;\n        bool hasWithdrawn;\n    }\n\n    struct Member {\n        bool exists;\n        address payable _address;\n    }\n\n    struct GroupMember {\n        bool exists;\n        address payable _address;\n        uint256 groupId;\n    }\n\n    struct RecordIndex {\n        bool exists;\n        uint256 index;\n    }\n\n    enum CycleStatus {NOT_STARTED, ONGOING, ENDED}\n}\n",
+  "sourcePath": "/home/emplug7/applications/elektav3/contracts/IGroupSchema.sol",
+  "ast": {
+    "absolutePath": "/home/emplug7/applications/elektav3/contracts/IGroupSchema.sol",
+    "exportedSymbols": {
+      "IGroupSchema": [
+        404
+      ]
+    },
+    "id": 405,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 310,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:32:3"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 404,
+        "linearizedBaseContracts": [
+          404
+        ],
+        "name": "IGroupSchema",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "IGroupSchema.Group",
+            "id": 321,
+            "members": [
+              {
+                "constant": false,
+                "id": 312,
+                "name": "id",
+                "nodeType": "VariableDeclaration",
+                "scope": 321,
+                "src": "144:10:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 311,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "144:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 314,
+                "name": "name",
+                "nodeType": "VariableDeclaration",
+                "scope": 321,
+                "src": "164:11:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 313,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "164:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 316,
+                "name": "symbol",
+                "nodeType": "VariableDeclaration",
+                "scope": 321,
+                "src": "185:13:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 315,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "185:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 318,
+                "name": "exists",
+                "nodeType": "VariableDeclaration",
+                "scope": 321,
+                "src": "208:11:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 317,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "208:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 320,
+                "name": "creatorAddress",
+                "nodeType": "VariableDeclaration",
+                "scope": 321,
+                "src": "229:30:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address_payable",
+                  "typeString": "address payable"
+                },
+                "typeName": {
+                  "id": 319,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "229:15:3",
+                  "stateMutability": "payable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Group",
+            "nodeType": "StructDefinition",
+            "scope": 404,
+            "src": "121:145:3",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "IGroupSchema.Cycle",
+            "id": 348,
+            "members": [
+              {
+                "constant": false,
+                "id": 323,
+                "name": "id",
+                "nodeType": "VariableDeclaration",
+                "scope": 348,
+                "src": "295:10:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 322,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "295:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 325,
+                "name": "groupId",
+                "nodeType": "VariableDeclaration",
+                "scope": 348,
+                "src": "315:15:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 324,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "315:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 327,
+                "name": "numberOfDepositors",
+                "nodeType": "VariableDeclaration",
+                "scope": 348,
+                "src": "340:26:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 326,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "340:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 329,
+                "name": "cycleStartTimeStamp",
+                "nodeType": "VariableDeclaration",
+                "scope": 348,
+                "src": "376:27:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 328,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "376:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 331,
+                "name": "cycleDuration",
+                "nodeType": "VariableDeclaration",
+                "scope": 348,
+                "src": "413:21:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 330,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "413:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 333,
+                "name": "maximumSlots",
+                "nodeType": "VariableDeclaration",
+                "scope": 348,
+                "src": "444:20:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 332,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "444:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 335,
+                "name": "cycleStakeAmount",
+                "nodeType": "VariableDeclaration",
+                "scope": 348,
+                "src": "474:24:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 334,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "474:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 337,
+                "name": "totalStakes",
+                "nodeType": "VariableDeclaration",
+                "scope": 348,
+                "src": "578:19:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 336,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "578:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 339,
+                "name": "stakesClaimed",
+                "nodeType": "VariableDeclaration",
+                "scope": 348,
+                "src": "678:21:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 338,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "678:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 341,
+                "name": "hasMaximumSlots",
+                "nodeType": "VariableDeclaration",
+                "scope": 348,
+                "src": "709:20:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 340,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "709:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 343,
+                "name": "exists",
+                "nodeType": "VariableDeclaration",
+                "scope": 348,
+                "src": "739:11:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 342,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "739:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 345,
+                "name": "cycleStatus",
+                "nodeType": "VariableDeclaration",
+                "scope": 348,
+                "src": "760:23:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_CycleStatus_$403",
+                  "typeString": "enum IGroupSchema.CycleStatus"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 344,
+                  "name": "CycleStatus",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 403,
+                  "src": "760:11:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_CycleStatus_$403",
+                    "typeString": "enum IGroupSchema.CycleStatus"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 347,
+                "name": "stakesClaimedBeforeMaturity",
+                "nodeType": "VariableDeclaration",
+                "scope": 348,
+                "src": "900:35:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 346,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "900:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Cycle",
+            "nodeType": "StructDefinition",
+            "scope": 404,
+            "src": "272:670:3",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "IGroupSchema.CycleFinancial",
+            "id": 365,
+            "members": [
+              {
+                "constant": false,
+                "id": 350,
+                "name": "exists",
+                "nodeType": "VariableDeclaration",
+                "scope": 365,
+                "src": "980:11:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 349,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "980:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 352,
+                "name": "cycleId",
+                "nodeType": "VariableDeclaration",
+                "scope": 365,
+                "src": "1001:15:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 351,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1001:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 354,
+                "name": "underlyingTotalDeposits",
+                "nodeType": "VariableDeclaration",
+                "scope": 365,
+                "src": "1083:31:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 353,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1083:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 356,
+                "name": "underlyingTotalWithdrawn",
+                "nodeType": "VariableDeclaration",
+                "scope": 365,
+                "src": "1199:32:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 355,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1199:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 358,
+                "name": "underlyingBalance",
+                "nodeType": "VariableDeclaration",
+                "scope": 365,
+                "src": "1360:25:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 357,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1360:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 360,
+                "name": "derivativeBalance",
+                "nodeType": "VariableDeclaration",
+                "scope": 365,
+                "src": "1476:25:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 359,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1476:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 362,
+                "name": "underylingBalanceClaimedBeforeMaturity",
+                "nodeType": "VariableDeclaration",
+                "scope": 365,
+                "src": "1616:46:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 361,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1616:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 364,
+                "name": "derivativeBalanceClaimedBeforeMaturity",
+                "nodeType": "VariableDeclaration",
+                "scope": 365,
+                "src": "1780:46:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 363,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1780:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "CycleFinancial",
+            "nodeType": "StructDefinition",
+            "scope": 404,
+            "src": "948:885:3",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "IGroupSchema.CycleMember",
+            "id": 382,
+            "members": [
+              {
+                "constant": false,
+                "id": 367,
+                "name": "cycleId",
+                "nodeType": "VariableDeclaration",
+                "scope": 382,
+                "src": "1868:15:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 366,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1868:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 369,
+                "name": "groupId",
+                "nodeType": "VariableDeclaration",
+                "scope": 382,
+                "src": "1893:15:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 368,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1893:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 371,
+                "name": "totalLiquidityAsPenalty",
+                "nodeType": "VariableDeclaration",
+                "scope": 382,
+                "src": "1918:31:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 370,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1918:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 373,
+                "name": "numberOfCycleStakes",
+                "nodeType": "VariableDeclaration",
+                "scope": 382,
+                "src": "1959:27:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 372,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1959:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 375,
+                "name": "stakesClaimed",
+                "nodeType": "VariableDeclaration",
+                "scope": 382,
+                "src": "1996:21:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 374,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1996:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 377,
+                "name": "exist",
+                "nodeType": "VariableDeclaration",
+                "scope": 382,
+                "src": "2027:10:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 376,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2027:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 379,
+                "name": "_address",
+                "nodeType": "VariableDeclaration",
+                "scope": 382,
+                "src": "2047:24:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address_payable",
+                  "typeString": "address payable"
+                },
+                "typeName": {
+                  "id": 378,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2047:15:3",
+                  "stateMutability": "payable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 381,
+                "name": "hasWithdrawn",
+                "nodeType": "VariableDeclaration",
+                "scope": 382,
+                "src": "2081:17:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 380,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2081:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "CycleMember",
+            "nodeType": "StructDefinition",
+            "scope": 404,
+            "src": "1839:266:3",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "IGroupSchema.Member",
+            "id": 387,
+            "members": [
+              {
+                "constant": false,
+                "id": 384,
+                "name": "exists",
+                "nodeType": "VariableDeclaration",
+                "scope": 387,
+                "src": "2135:11:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 383,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2135:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 386,
+                "name": "_address",
+                "nodeType": "VariableDeclaration",
+                "scope": 387,
+                "src": "2156:24:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address_payable",
+                  "typeString": "address payable"
+                },
+                "typeName": {
+                  "id": 385,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2156:15:3",
+                  "stateMutability": "payable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Member",
+            "nodeType": "StructDefinition",
+            "scope": 404,
+            "src": "2111:76:3",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "IGroupSchema.GroupMember",
+            "id": 394,
+            "members": [
+              {
+                "constant": false,
+                "id": 389,
+                "name": "exists",
+                "nodeType": "VariableDeclaration",
+                "scope": 394,
+                "src": "2222:11:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 388,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2222:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 391,
+                "name": "_address",
+                "nodeType": "VariableDeclaration",
+                "scope": 394,
+                "src": "2243:24:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address_payable",
+                  "typeString": "address payable"
+                },
+                "typeName": {
+                  "id": 390,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2243:15:3",
+                  "stateMutability": "payable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 393,
+                "name": "groupId",
+                "nodeType": "VariableDeclaration",
+                "scope": 394,
+                "src": "2277:15:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 392,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2277:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "GroupMember",
+            "nodeType": "StructDefinition",
+            "scope": 404,
+            "src": "2193:106:3",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "IGroupSchema.RecordIndex",
+            "id": 399,
+            "members": [
+              {
+                "constant": false,
+                "id": 396,
+                "name": "exists",
+                "nodeType": "VariableDeclaration",
+                "scope": 399,
+                "src": "2334:11:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 395,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2334:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 398,
+                "name": "index",
+                "nodeType": "VariableDeclaration",
+                "scope": 399,
+                "src": "2355:13:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 397,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2355:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "RecordIndex",
+            "nodeType": "StructDefinition",
+            "scope": 404,
+            "src": "2305:70:3",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "IGroupSchema.CycleStatus",
+            "id": 403,
+            "members": [
+              {
+                "id": 400,
+                "name": "NOT_STARTED",
+                "nodeType": "EnumValue",
+                "src": "2399:11:3"
+              },
+              {
+                "id": 401,
+                "name": "ONGOING",
+                "nodeType": "EnumValue",
+                "src": "2412:7:3"
+              },
+              {
+                "id": 402,
+                "name": "ENDED",
+                "nodeType": "EnumValue",
+                "src": "2421:5:3"
+              }
+            ],
+            "name": "CycleStatus",
+            "nodeType": "EnumDefinition",
+            "src": "2381:46:3"
+          }
+        ],
+        "scope": 405,
+        "src": "92:2337:3"
+      }
+    ],
+    "src": "32:2398:3"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/home/emplug7/applications/elektav3/contracts/IGroupSchema.sol",
+      "exportedSymbols": {
+        "IGroupSchema": [
+          404
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.4",
+            ".22",
+            "<",
+            "0.9",
+            ".0"
+          ]
+        },
+        "id": 310,
+        "name": "PragmaDirective",
+        "src": "32:32:3"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            404
+          ],
+          "name": "IGroupSchema",
+          "scope": 405
+        },
+        "children": [
+          {
+            "attributes": {
+              "canonicalName": "IGroupSchema.Group",
+              "name": "Group",
+              "scope": 404,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "id",
+                  "scope": 321,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 311,
+                    "name": "ElementaryTypeName",
+                    "src": "144:7:3"
+                  }
+                ],
+                "id": 312,
+                "name": "VariableDeclaration",
+                "src": "144:10:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "name",
+                  "scope": 321,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string"
+                    },
+                    "id": 313,
+                    "name": "ElementaryTypeName",
+                    "src": "164:6:3"
+                  }
+                ],
+                "id": 314,
+                "name": "VariableDeclaration",
+                "src": "164:11:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "symbol",
+                  "scope": 321,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string"
+                    },
+                    "id": 315,
+                    "name": "ElementaryTypeName",
+                    "src": "185:6:3"
+                  }
+                ],
+                "id": 316,
+                "name": "VariableDeclaration",
+                "src": "185:13:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "exists",
+                  "scope": 321,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bool",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 317,
+                    "name": "ElementaryTypeName",
+                    "src": "208:4:3"
+                  }
+                ],
+                "id": 318,
+                "name": "VariableDeclaration",
+                "src": "208:11:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "creatorAddress",
+                  "scope": 321,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address payable",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "stateMutability": "payable",
+                      "type": "address payable"
+                    },
+                    "id": 319,
+                    "name": "ElementaryTypeName",
+                    "src": "229:15:3"
+                  }
+                ],
+                "id": 320,
+                "name": "VariableDeclaration",
+                "src": "229:30:3"
+              }
+            ],
+            "id": 321,
+            "name": "StructDefinition",
+            "src": "121:145:3"
+          },
+          {
+            "attributes": {
+              "canonicalName": "IGroupSchema.Cycle",
+              "name": "Cycle",
+              "scope": 404,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "id",
+                  "scope": 348,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 322,
+                    "name": "ElementaryTypeName",
+                    "src": "295:7:3"
+                  }
+                ],
+                "id": 323,
+                "name": "VariableDeclaration",
+                "src": "295:10:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "groupId",
+                  "scope": 348,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 324,
+                    "name": "ElementaryTypeName",
+                    "src": "315:7:3"
+                  }
+                ],
+                "id": 325,
+                "name": "VariableDeclaration",
+                "src": "315:15:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "numberOfDepositors",
+                  "scope": 348,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 326,
+                    "name": "ElementaryTypeName",
+                    "src": "340:7:3"
+                  }
+                ],
+                "id": 327,
+                "name": "VariableDeclaration",
+                "src": "340:26:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "cycleStartTimeStamp",
+                  "scope": 348,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 328,
+                    "name": "ElementaryTypeName",
+                    "src": "376:7:3"
+                  }
+                ],
+                "id": 329,
+                "name": "VariableDeclaration",
+                "src": "376:27:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "cycleDuration",
+                  "scope": 348,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 330,
+                    "name": "ElementaryTypeName",
+                    "src": "413:7:3"
+                  }
+                ],
+                "id": 331,
+                "name": "VariableDeclaration",
+                "src": "413:21:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "maximumSlots",
+                  "scope": 348,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 332,
+                    "name": "ElementaryTypeName",
+                    "src": "444:7:3"
+                  }
+                ],
+                "id": 333,
+                "name": "VariableDeclaration",
+                "src": "444:20:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "cycleStakeAmount",
+                  "scope": 348,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 334,
+                    "name": "ElementaryTypeName",
+                    "src": "474:7:3"
+                  }
+                ],
+                "id": 335,
+                "name": "VariableDeclaration",
+                "src": "474:24:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "totalStakes",
+                  "scope": 348,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 336,
+                    "name": "ElementaryTypeName",
+                    "src": "578:7:3"
+                  }
+                ],
+                "id": 337,
+                "name": "VariableDeclaration",
+                "src": "578:19:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "stakesClaimed",
+                  "scope": 348,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 338,
+                    "name": "ElementaryTypeName",
+                    "src": "678:7:3"
+                  }
+                ],
+                "id": 339,
+                "name": "VariableDeclaration",
+                "src": "678:21:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "hasMaximumSlots",
+                  "scope": 348,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bool",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 340,
+                    "name": "ElementaryTypeName",
+                    "src": "709:4:3"
+                  }
+                ],
+                "id": 341,
+                "name": "VariableDeclaration",
+                "src": "709:20:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "exists",
+                  "scope": 348,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bool",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 342,
+                    "name": "ElementaryTypeName",
+                    "src": "739:4:3"
+                  }
+                ],
+                "id": 343,
+                "name": "VariableDeclaration",
+                "src": "739:11:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "cycleStatus",
+                  "scope": 348,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "enum IGroupSchema.CycleStatus",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "contractScope": null,
+                      "name": "CycleStatus",
+                      "referencedDeclaration": 403,
+                      "type": "enum IGroupSchema.CycleStatus"
+                    },
+                    "id": 344,
+                    "name": "UserDefinedTypeName",
+                    "src": "760:11:3"
+                  }
+                ],
+                "id": 345,
+                "name": "VariableDeclaration",
+                "src": "760:23:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "stakesClaimedBeforeMaturity",
+                  "scope": 348,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 346,
+                    "name": "ElementaryTypeName",
+                    "src": "900:7:3"
+                  }
+                ],
+                "id": 347,
+                "name": "VariableDeclaration",
+                "src": "900:35:3"
+              }
+            ],
+            "id": 348,
+            "name": "StructDefinition",
+            "src": "272:670:3"
+          },
+          {
+            "attributes": {
+              "canonicalName": "IGroupSchema.CycleFinancial",
+              "name": "CycleFinancial",
+              "scope": 404,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "exists",
+                  "scope": 365,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bool",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 349,
+                    "name": "ElementaryTypeName",
+                    "src": "980:4:3"
+                  }
+                ],
+                "id": 350,
+                "name": "VariableDeclaration",
+                "src": "980:11:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "cycleId",
+                  "scope": 365,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 351,
+                    "name": "ElementaryTypeName",
+                    "src": "1001:7:3"
+                  }
+                ],
+                "id": 352,
+                "name": "VariableDeclaration",
+                "src": "1001:15:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "underlyingTotalDeposits",
+                  "scope": 365,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 353,
+                    "name": "ElementaryTypeName",
+                    "src": "1083:7:3"
+                  }
+                ],
+                "id": 354,
+                "name": "VariableDeclaration",
+                "src": "1083:31:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "underlyingTotalWithdrawn",
+                  "scope": 365,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 355,
+                    "name": "ElementaryTypeName",
+                    "src": "1199:7:3"
+                  }
+                ],
+                "id": 356,
+                "name": "VariableDeclaration",
+                "src": "1199:32:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "underlyingBalance",
+                  "scope": 365,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 357,
+                    "name": "ElementaryTypeName",
+                    "src": "1360:7:3"
+                  }
+                ],
+                "id": 358,
+                "name": "VariableDeclaration",
+                "src": "1360:25:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "derivativeBalance",
+                  "scope": 365,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 359,
+                    "name": "ElementaryTypeName",
+                    "src": "1476:7:3"
+                  }
+                ],
+                "id": 360,
+                "name": "VariableDeclaration",
+                "src": "1476:25:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "underylingBalanceClaimedBeforeMaturity",
+                  "scope": 365,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 361,
+                    "name": "ElementaryTypeName",
+                    "src": "1616:7:3"
+                  }
+                ],
+                "id": 362,
+                "name": "VariableDeclaration",
+                "src": "1616:46:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "derivativeBalanceClaimedBeforeMaturity",
+                  "scope": 365,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 363,
+                    "name": "ElementaryTypeName",
+                    "src": "1780:7:3"
+                  }
+                ],
+                "id": 364,
+                "name": "VariableDeclaration",
+                "src": "1780:46:3"
+              }
+            ],
+            "id": 365,
+            "name": "StructDefinition",
+            "src": "948:885:3"
+          },
+          {
+            "attributes": {
+              "canonicalName": "IGroupSchema.CycleMember",
+              "name": "CycleMember",
+              "scope": 404,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "cycleId",
+                  "scope": 382,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 366,
+                    "name": "ElementaryTypeName",
+                    "src": "1868:7:3"
+                  }
+                ],
+                "id": 367,
+                "name": "VariableDeclaration",
+                "src": "1868:15:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "groupId",
+                  "scope": 382,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 368,
+                    "name": "ElementaryTypeName",
+                    "src": "1893:7:3"
+                  }
+                ],
+                "id": 369,
+                "name": "VariableDeclaration",
+                "src": "1893:15:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "totalLiquidityAsPenalty",
+                  "scope": 382,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 370,
+                    "name": "ElementaryTypeName",
+                    "src": "1918:7:3"
+                  }
+                ],
+                "id": 371,
+                "name": "VariableDeclaration",
+                "src": "1918:31:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "numberOfCycleStakes",
+                  "scope": 382,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 372,
+                    "name": "ElementaryTypeName",
+                    "src": "1959:7:3"
+                  }
+                ],
+                "id": 373,
+                "name": "VariableDeclaration",
+                "src": "1959:27:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "stakesClaimed",
+                  "scope": 382,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 374,
+                    "name": "ElementaryTypeName",
+                    "src": "1996:7:3"
+                  }
+                ],
+                "id": 375,
+                "name": "VariableDeclaration",
+                "src": "1996:21:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "exist",
+                  "scope": 382,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bool",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 376,
+                    "name": "ElementaryTypeName",
+                    "src": "2027:4:3"
+                  }
+                ],
+                "id": 377,
+                "name": "VariableDeclaration",
+                "src": "2027:10:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "_address",
+                  "scope": 382,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address payable",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "stateMutability": "payable",
+                      "type": "address payable"
+                    },
+                    "id": 378,
+                    "name": "ElementaryTypeName",
+                    "src": "2047:15:3"
+                  }
+                ],
+                "id": 379,
+                "name": "VariableDeclaration",
+                "src": "2047:24:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "hasWithdrawn",
+                  "scope": 382,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bool",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 380,
+                    "name": "ElementaryTypeName",
+                    "src": "2081:4:3"
+                  }
+                ],
+                "id": 381,
+                "name": "VariableDeclaration",
+                "src": "2081:17:3"
+              }
+            ],
+            "id": 382,
+            "name": "StructDefinition",
+            "src": "1839:266:3"
+          },
+          {
+            "attributes": {
+              "canonicalName": "IGroupSchema.Member",
+              "name": "Member",
+              "scope": 404,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "exists",
+                  "scope": 387,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bool",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 383,
+                    "name": "ElementaryTypeName",
+                    "src": "2135:4:3"
+                  }
+                ],
+                "id": 384,
+                "name": "VariableDeclaration",
+                "src": "2135:11:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "_address",
+                  "scope": 387,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address payable",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "stateMutability": "payable",
+                      "type": "address payable"
+                    },
+                    "id": 385,
+                    "name": "ElementaryTypeName",
+                    "src": "2156:15:3"
+                  }
+                ],
+                "id": 386,
+                "name": "VariableDeclaration",
+                "src": "2156:24:3"
+              }
+            ],
+            "id": 387,
+            "name": "StructDefinition",
+            "src": "2111:76:3"
+          },
+          {
+            "attributes": {
+              "canonicalName": "IGroupSchema.GroupMember",
+              "name": "GroupMember",
+              "scope": 404,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "exists",
+                  "scope": 394,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bool",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 388,
+                    "name": "ElementaryTypeName",
+                    "src": "2222:4:3"
+                  }
+                ],
+                "id": 389,
+                "name": "VariableDeclaration",
+                "src": "2222:11:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "_address",
+                  "scope": 394,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address payable",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "stateMutability": "payable",
+                      "type": "address payable"
+                    },
+                    "id": 390,
+                    "name": "ElementaryTypeName",
+                    "src": "2243:15:3"
+                  }
+                ],
+                "id": 391,
+                "name": "VariableDeclaration",
+                "src": "2243:24:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "groupId",
+                  "scope": 394,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 392,
+                    "name": "ElementaryTypeName",
+                    "src": "2277:7:3"
+                  }
+                ],
+                "id": 393,
+                "name": "VariableDeclaration",
+                "src": "2277:15:3"
+              }
+            ],
+            "id": 394,
+            "name": "StructDefinition",
+            "src": "2193:106:3"
+          },
+          {
+            "attributes": {
+              "canonicalName": "IGroupSchema.RecordIndex",
+              "name": "RecordIndex",
+              "scope": 404,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "exists",
+                  "scope": 399,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bool",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 395,
+                    "name": "ElementaryTypeName",
+                    "src": "2334:4:3"
+                  }
+                ],
+                "id": 396,
+                "name": "VariableDeclaration",
+                "src": "2334:11:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "index",
+                  "scope": 399,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 397,
+                    "name": "ElementaryTypeName",
+                    "src": "2355:7:3"
+                  }
+                ],
+                "id": 398,
+                "name": "VariableDeclaration",
+                "src": "2355:13:3"
+              }
+            ],
+            "id": 399,
+            "name": "StructDefinition",
+            "src": "2305:70:3"
+          },
+          {
+            "attributes": {
+              "canonicalName": "IGroupSchema.CycleStatus",
+              "name": "CycleStatus"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "NOT_STARTED"
+                },
+                "id": 400,
+                "name": "EnumValue",
+                "src": "2399:11:3"
+              },
+              {
+                "attributes": {
+                  "name": "ONGOING"
+                },
+                "id": 401,
+                "name": "EnumValue",
+                "src": "2412:7:3"
+              },
+              {
+                "attributes": {
+                  "name": "ENDED"
+                },
+                "id": 402,
+                "name": "EnumValue",
+                "src": "2421:5:3"
+              }
+            ],
+            "id": 403,
+            "name": "EnumDefinition",
+            "src": "2381:46:3"
+          }
+        ],
+        "id": 404,
+        "name": "ContractDefinition",
+        "src": "92:2337:3"
+      }
+    ],
+    "id": 405,
+    "name": "SourceUnit",
+    "src": "32:2398:3"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-04-05T06:10:42.008Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
