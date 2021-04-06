@@ -7,10 +7,8 @@ body {
   box-sizing: border-box;
   max-width: 100%;
   overflow-x: hidden;
-  background-image: linear-gradient(180deg, #1e3c74 #fff #1e3c74);
-  background:#1e3c74;
-  user-select: none;
-  scroll-behavior: smooth;
+  background: rgb(7,36,93);
+  background: linear-gradient(180deg, rgba(7,36,93,1) 0%, rgba(8,43,93,1) 50%, rgba(8,50,93,1) 100%);
   color:#fff;
 
 
@@ -68,28 +66,33 @@ main{
 .home-img_container{
 display:grid;
 place-items:center;
+height:100vh;
 
 }
-
+.home-img_container  h1{
+  font-size: 4em;
+  
+  }
 .home-container{
 display:grid;
 grid-template-columns: 50% 50%;
 }
 .home-intro{
-margin:5rem;
+  display: grid;
+  place-items: center;
 }
 .home-img{
-display: grid;
-place-items: center;
+width: 70%;
 
 }
 .elekta_card_container{
 height: auto;
-width: 100%;
+width: auto;
 display:grid;
 grid-template-columns: 1fr 1fr;
 grid-template-rows: 1fr 1fr;
 grid-gap:1rem;
+padding: 5rem;
 
 }
 .elekta_card{
@@ -126,3 +129,4 @@ border-radius: 0 0 10rem 0.2rem;
 .footer{
 text-align:center;
 }
+

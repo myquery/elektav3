@@ -25,7 +25,7 @@ class App extends Component {
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      this.setState({ web3, accounts, contract: instance }, this.runExample);
+      this.setState({ web3, accounts, contract: instance });
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
@@ -35,18 +35,6 @@ class App extends Component {
     }
   };
 
-  runExample = async () => {
-    const { accounts, contract } = this.state;
-
-    // Stores a given value, 5 by default.
-    //await contract.methods.set(5).send({ from: accounts[0] });
-
-    // Get the value from the contract to prove it worked.
-   // const response = await contract.methods.get().call();
-
-    // Update state with the result.
-  //  this.setState({ storageValue: response });
-  };
 
   render() {
     if (!this.state.web3) {
@@ -56,12 +44,13 @@ class App extends Component {
     return (
   
       <main>
-      <div className="container-fluid">
+      <div className="container-fluid home-container ">
+        
 
 
         {/* <div><Link href='/dapp'><a>My Dapp</a></Link></div>
     <div><Link href='/accounts'><a>My Accounts</a></Link></div> */}
-        <div className="home-container">
+        {/* <div className="home-container"> */}
           <div className="home-img_container">
             <h1 className="elekta-header">Elekta Movement</h1>
             <img src="../art-works/undraw_voting_nvu7.svg" className="home-img" alt="elekta" />
@@ -73,8 +62,8 @@ class App extends Component {
                   <a href={this.state.contract.methods.createElektaGroup("Surulere Association", "SUA")
                                                       .send({
                                                         from: this.state.accounts[0],
-                                                        gas: 21000,
-                                                        gasPrice: '20000000000'
+                                                        gas: 2100000,
+                                                        gasPrice: '20'
                                                         })}><h1>Create a Group</h1></a>
                   {/* <h1>Create a Group</h1> */}
                 </div>
@@ -85,8 +74,8 @@ class App extends Component {
                 <a href={this.state.contract.methods.joinAGroup("0x1e884C988Fe944b1B87B472638477BFBE2be6237", 1)
                                                     .send({
                                                       from: this.state.accounts[0],
-                                                      gas: 21000,
-                                                      gasPrice: '20000000000'
+                                                      gas: 2100000,
+                                                      gasPrice: '20'
                                                     })
                                                     .on("error", (err)=>{
                                                       console.log(err);
@@ -107,7 +96,7 @@ class App extends Component {
             </div>
 
           </div>
-        </div>
+        {/* </div> */}
       </div>
     </main>
     );
