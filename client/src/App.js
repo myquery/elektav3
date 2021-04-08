@@ -10,18 +10,25 @@ class App extends Component {
   componentDidMount = async () => {
     try {
       // Get network provider and web3 instance.
-      const web3 = await getWeb3();
+      // if(web3 !== "undefined"){
+        const web3 = await getWeb3();
 
-      // Use web3 to get the user's accounts.
-      const accounts = await web3.eth.getAccounts();
+        // Use web3 to get the user's accounts.
+        const accounts = await web3.eth.getAccounts();
+  
+        // Get the contract instance.
+        const networkId = await web3.eth.net.getId();
+        const deployedNetwork = ElektaMainContract.networks[networkId];
+        const instance = new web3.eth.Contract(
+          ElektaMainContract.abi,
+          deployedNetwork && deployedNetwork.address,
+        );
+      // }else{
+      //   alert(
+      //     `Metamask not installed`,
+      //   );
+      // }
 
-      // Get the contract instance.
-      const networkId = await web3.eth.net.getId();
-      const deployedNetwork = ElektaMainContract.networks[networkId];
-      const instance = new web3.eth.Contract(
-        ElektaMainContract.abi,
-        deployedNetwork && deployedNetwork.address,
-      );
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
@@ -59,28 +66,23 @@ class App extends Component {
             <div className="elekta_card_container">
               <div className="elekta_card card-color-first">
                 <div className="elekta_card-content">
-                  <a href={this.state.contract.methods.createElektaGroup("Surulere Association", "SUA")
+                  <a href="#" onClick={()=> this.state.contract.methods.createElektaGroup("Surulere Association", "SUA")
                                                       .send({
                                                         from: this.state.accounts[0],
-                                                        gas: 2100000,
-                                                        gasPrice: '20'
-                                                        })}><h1>Create a Group</h1></a>
+                                                     })}><h1>Create a Group</h1></a>
                   {/* <h1>Create a Group</h1> */}
                 </div>
 
               </div>
               <div className="elekta_card card-color-second">
                 <div className="elekta_card-content">
-                <a href={this.state.contract.methods.joinAGroup("0x1e884C988Fe944b1B87B472638477BFBE2be6237", 1)
+                <a href="#" onClick={()=> this.state.contract.methods.joinAGroup("0x1e884C988Fe944b1B87B472638477BFBE2be6237", 1)
                                                     .send({
                                                       from: this.state.accounts[0],
-                                                      gas: 2100000,
-                                                      gasPrice: '20'
-                                                    })
+                                                     })
                                                     .on("error", (err)=>{
                                                       console.log(err);
-                                                    })
-                                                    }><h1>Join a Group</h1></a>
+                                                    })}><h1>Join a Group</h1></a>
                 </div>
               </div>
               <div className="elekta_card card-color-third">
