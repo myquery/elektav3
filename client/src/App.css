@@ -8,7 +8,8 @@ body {
   max-width: 100%;
   overflow-x: hidden;
   background: rgb(7,36,93);
-  background: linear-gradient(180deg, rgba(7,36,93,1) 0%, rgba(8,43,93,1) 50%, rgba(8,50,93,1) 100%);
+  background: linear-gradient(180deg, rgba(7,36,93,1) 0%, rgba(35,98,187,1) 50%, rgba(8,50,93,1) 100%);
+  /* animation: bkg 5s ease-in-out 2s infinite alternate; */
   color:#fff;
 
 
@@ -28,6 +29,17 @@ a {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
+}
+
+@keyframes bkg {
+  0%, 100%{
+    background: rgb(7,36,93);
+    background: linear-gradient(180deg, rgba(7,36,93,1) 0%, rgba(8,43,93,1) 50%, rgba(8,50,93,1) 100%);
+  }
+  50%{
+    background: rgb(7,36,93);
+    background: linear-gradient(180deg, rgba(7,36,93,1) 0%, rgba(35,98,187,1) 50%, rgba(8,50,93,1) 100%);
+  }
 }
 
 .App {
@@ -71,6 +83,10 @@ height:100vh;
 }
 .home-img_container  h1{
   font-size: 4em;
+   background: -webkit-linear-gradient(#eee, rgb(167, 213, 243));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 5px 1px #25334C;
   
   }
 .home-container{
@@ -107,6 +123,12 @@ margin:5rem;
 display: grid;
 place-items:center;
 }
+
+.elekta_card-content{
+  margin:5rem;
+  display: grid;
+  place-items:center;
+  }
 .card-color-first{
 background:#1F85DE;
 border-radius: 10rem 0.2rem 0rem 0;
@@ -128,5 +150,46 @@ border-radius: 0 0 10rem 0.2rem;
 
 .footer{
 text-align:center;
+}
+
+@media(max-width: 400px){
+
+  .home-container{
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-template-rows:1fr;
+    }
+
+    .home-img_container  h1{
+      font-size: 2em;
+      
+      }
+
+    .elekta_card_container{
+      height: 100%;
+      width: 100%;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      grid-gap:1rem;
+      
+      }
+    
+
+      .elekta_card{
+       height: 10rem;
+        width: 10rem;
+      }
+        
+      .elekta_card-content{
+        margin:1rem;
+        position: relative;
+        }
+
+        .elekta_card-content h1{
+          font-size: 1rem;
+          position: absolute;
+          margin: auto auto;
+          }
 }
 
