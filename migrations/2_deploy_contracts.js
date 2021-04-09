@@ -1,6 +1,6 @@
-var ElektaGroups = artifacts.require("./ElektaGroups.sol");
+// var ElektaGroups = artifacts.require("./ElektaGroups.sol");
 
-module.exports = function(deployer) {
-    deployer.deploy(ElektaGroups);
-  };
+// module.exports = function(deployer) {
+//     deployer.deploy(ElektaGroups);
+//   };
   
