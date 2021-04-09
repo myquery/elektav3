@@ -42,6 +42,8 @@ contract ElektaMain is IGroupSchema{
    // address private xendAddress2 = 0x41E95e88c0dCEaCe4159f4118217B67038aaE6F0;
    // address private xendAddressCooperative = 0x21d635b36F54E70b578eAd19448BFa2bB73F96E2;
 
+    ElektaGroups public _elektaGroup;
+
    mapping(address => ProjectDetail ) public elektaProjects;
 
    mapping(address => mapping(address => uint256)) public fundProject;
@@ -55,6 +57,7 @@ contract ElektaMain is IGroupSchema{
        owner = msg.sender;
       //  xendAddress  =  IGroups(0x7B2d6633F56c05F76409aE236A2036F07232BBFA);
        xendAddress  =  IGroups(0x2060Fe1Ae5EF46421E142f14f703b81ea816615b);
+       _elektaGroup = new ElektaGroups();
        
 
    }
@@ -115,7 +118,6 @@ contract ElektaMain is IGroupSchema{
    //join a group
 
    function joinAGroup(address payable _addr, uint _id) public {
-          ElektaGroups _elektaGroup = new ElektaGroups();
           _elektaGroup.addToGroup(_addr, _id);
    }
 }
