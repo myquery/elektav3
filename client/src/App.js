@@ -76,7 +76,7 @@ class App extends Component {
               </div>
               <div className="elekta_card card-color-second">
                 <div className="elekta_card-content">
-                <a href="#" onClick={()=> this.state.contract.methods.joinAGroup("0x1e884C988Fe944b1B87B472638477BFBE2be6237", 1)
+                <a href="#" onClick={()=> this.state.contract.methods.joinAGroup('0x1e884C988Fe944b1B87B472638477BFBE2be6237', 1)
                                                     .send({
                                                       from: this.state.accounts[0],
                                                      })
